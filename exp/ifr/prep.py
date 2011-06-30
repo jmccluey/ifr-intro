@@ -7,15 +7,11 @@ This module prepares stimuli to be used by ifr.py.
 import random
 import os
 import sys
-import numpy
-import copy
-import re
 
 def listWAScheck(wordInds, WASthresh):
     """
     Check if similarity between any two words in a list exceeds some
-    threshold.  Another version is in the wordpools project, sticking
-    with this one for now.
+    threshold.
     """
     # check to make sure no two words in the list are too similar
     listGood = True

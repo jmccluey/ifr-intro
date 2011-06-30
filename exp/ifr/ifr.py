@@ -120,11 +120,6 @@ def logEvent(log, ts, type,
     lineFormat = '%s\t' * (len(inputs) - 1) + '%s'
     log.logMessage(lineFormat % inputs, ts)
 
-def instructFile(filename, scroll=None, exitbutton=None):
-    """Present a text file as instructions."""
-    text = open(filename, 'r').read()
-    instruct(text, scroll=scroll, exitbutton=exitbutton)
-
 def trial(exp, config, clock, state, log, video, audio, startBeep,
           stopBeep, fixationCross):
     """

@@ -8,7 +8,6 @@ This module sets options for running Immediate Free Recall.
 nSessions = 2
 
 nLists = 16
-adjustTrials = [] # before these trials, do a longer break
 listLength = 24
 wpfile = '../pools/ifr_wordpool.txt'
 
