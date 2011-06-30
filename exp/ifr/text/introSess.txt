@@ -1,1 +1,7 @@
-introSess
+During the course of this study, words will appear on the screen as
+part of a list, one word at a time.
+
+Please pay attention to these words, as you will be asked to remember
+them.
+
+* Please press RETURN to continue *

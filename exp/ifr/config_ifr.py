@@ -16,6 +16,7 @@ wpfile = '../pools/ifr_wordpool.txt'
 wasfile = '../pools/ifr_was.txt'
 WASthresh = .55 # maximum acceptable WAS similarity between any pair of words
 maxTries = 1200 # maximum number of tries to create a list
+allowPrevSessWords = True
 
 # version file name
 svnVersionFile = 'version.txt'
@@ -47,11 +48,10 @@ exitButton = 'RETURN'
 textFiles = dict()
 
 textFiles['introSess'] = 'text/introSess.txt'
-
 textFiles['introRecall'] = 'text/introRecall.txt'
-
 textFiles['introQuestions'] = 'text/introQuestions.txt'
 textFiles['introGetReady'] = 'text/introGetReady.txt'
+textFiles['trialBreak'] = 'text/trialBreak.txt'
 
 files = [wpfile,
          wasfile]
@@ -62,6 +62,7 @@ files.extend(textFiles.values())
 # breaks
 instructISI = 500
 preListDelay = 1500
+breakDuration = 5000
 
 # study
 wordDuration = 300
