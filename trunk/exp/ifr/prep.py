@@ -90,18 +90,21 @@ def sessWordOrder(prev_sess_words, config):
         sess_wo.append(list_wo)
         sess_words.extend(list_wo)
 
-    # previous sessions's words are now free to be used again
-    wp_allowed.extend(prev_sess_words)
-    # current session's words are now free to be used again
-    #wp_allowed.extend(sess_words)
+    if config.allowPrevSessWords:
+        # current session's words are now free to be used again
+        wp_allowed.extend(sess_words)
+    else:
+        # only previous session's words are free to be used again
+        wp_allowed.extend(prev_sess_words)
 
     return sess_wo, sess_words
 
 def subjWordOrder(config):
     """
     Create the order of presentation of stimuli for one subject.
-    Words can be repeated, but not within a session, and not in
-    adjacent sessions.
+    Words can be repeated, but not within a session, and only in
+    adjacent sessions if specified in the config (see
+    allowPrevSessWords).
 
     Inputs
     ______
@@ -181,5 +184,23 @@ def estimateTotalTime(config):
     PLD W ISI W ISI ... W ISI PRD R
     """
     
-    # to be developed
-    return
+    # mean time for list items
+    itemTime = config.wordDuration + config.wordISI + config.jitter/2
+    print 'Item: ' + str(itemTime)
+
+    # mean list time
+    listTime = config.preListDelay + itemTime*config.listLength + \
+               (config.preRecallDelay + config.jitterBeforeRecall/2) + \
+               config.recallDuration
+    print 'List: ' + str(listTime)
+
+    instruct = 300000 # getting through instructions
+    listBreak = config.breakDuration # break after each list
+
+    # total session time
+    sessionTime = instruct + (listTime + listBreak)*config.nLists
+
+    # convert to minutes
+    sessionTime = sessionTime*(1./1000)*(1./60)
+
+    return sessionTime

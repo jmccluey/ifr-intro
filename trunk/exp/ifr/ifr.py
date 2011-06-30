@@ -320,7 +320,13 @@ def run(exp, config):
     # check if we're still presenting lists
     while state.trialNum < config.nLists:
 
-        # break
+        if state.trialNum > 0:
+            # short break, no participant control on duration
+            breakText = Text(open(config.textFiles['trialBreak'],'r').read())
+            breakStim = video.showCentered(breakText)
+            video.updateScreen(clock)
+            video.unshow(breakStim)
+            clock.delay(config.breakDuration)
 
         # fixation cross
         fix = video.showCentered(fixationCross)
