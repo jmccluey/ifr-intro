@@ -65,7 +65,7 @@ def prepare(exp, config):
     # write out all the to-be-presented items to text files
     for i in range(config.nSessions):
         exp.setSession(i)
-        for j in xrange(config.nLists):
+        for j in xrange(config.nTotalLists):
             # each list written to data/[subject]/session_[i]/[j].lst
             listFile = exp.session.createFile('%d.lst' % j)
 
@@ -313,15 +313,22 @@ def run(exp, config):
     video.updateScreen(clock)
     
     # check if we're still presenting lists
-    while state.trialNum < config.nLists:
+    while state.trialNum < config.nTotalLists:
 
         if state.trialNum > 0:
-            # short break, no participant control on duration
+            # minimum break duration
             breakText = Text(open(config.textFiles['trialBreak'],'r').read())
             breakStim = video.showCentered(breakText)
             video.updateScreen(clock)
             video.unshow(breakStim)
             clock.delay(config.breakDuration)
+
+            if config.breakSubjectControl:
+                endBreakText = Text(open(config.textFiles['endBreak'],'r').read())
+                timestamp = waitForAnyKey(clock, endBreakText)
+
+                # log break
+                logEvent(log, timestamp, 'REST')
 
         # fixation cross
         fix = video.showCentered(fixationCross)

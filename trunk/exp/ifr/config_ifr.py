@@ -7,7 +7,9 @@ This module sets options for running Immediate Free Recall.
 ### experiment structure ###
 nSessions = 2
 
-nLists = 16
+nLists = 16 # number of unique word lists
+nReps = 2 # number of time those word lists are repeated
+nTotalLists = nLists * nReps
 listLength = 24
 wpfile = '../pools/ifr_wordpool.txt'
 
@@ -19,6 +21,9 @@ allowPrevSessWords = True
 
 # version file name
 svnVersionFile = 'version.txt'
+
+# break control
+breakSubjectControl = True
 
 ### stimuli ###
 
@@ -75,3 +80,8 @@ jitterBeforeRecall = 200
 # test
 recallDuration = 75000
 
+
+fastConfig = True
+if fastConfig:
+    listLength = 6
+    recallDuration = 10000

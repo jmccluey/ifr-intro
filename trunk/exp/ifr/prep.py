@@ -84,6 +84,18 @@ def sessWordOrder(prev_sess_words, config):
         list_wo = listWordOrder(config.listLength, config.WASthresh,
                                 config.maxTries)
         sess_wo.append(list_wo)
+        
+        # repeat shuffled lists
+        for m in xrange(config.nReps-1):
+            # dereference list, or else prior lists of these words
+            # will get shuffled too
+            list_wo = list_wo[:]
+
+            # shuffle and add
+            random.shuffle(list_wo)
+            # repeated list criteria?
+            sess_wo.append(list_wo)
+
         sess_words.extend(list_wo)
 
     if config.allowPrevSessWords:
@@ -194,7 +206,7 @@ def estimateTotalTime(config):
     listBreak = config.breakDuration # break after each list
 
     # total session time
-    sessionTime = instruct + (listTime + listBreak)*config.nLists
+    sessionTime = instruct + (listTime + listBreak)*config.nTotalLists
 
     # convert to minutes
     sessionTime = sessionTime*(1./1000)*(1./60)
