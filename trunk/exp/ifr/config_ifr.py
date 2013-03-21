@@ -56,6 +56,7 @@ textFiles['introRecall'] = 'text/introRecall.txt'
 textFiles['introQuestions'] = 'text/introQuestions.txt'
 textFiles['introGetReady'] = 'text/introGetReady.txt'
 textFiles['trialBreak'] = 'text/trialBreak.txt'
+textFiles['endBreak'] = 'text/endBreak.txt'
 
 files = [wpfile,
          wasfile]
@@ -70,18 +71,18 @@ breakDuration = 5000
 
 # study
 wordDuration = 300
-wordISI = 2000
-jitter = 400
+wordISI = 1450
+jitter = 500
 
 # retention
 preRecallDelay = 1200
-jitterBeforeRecall = 200
+jitterBeforeRecall = 0
 
 # test
 recallDuration = 75000
 
 
-fastConfig = True
+fastConfig = False
 if fastConfig:
     listLength = 6
     recallDuration = 10000

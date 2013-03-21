@@ -323,6 +323,7 @@ def run(exp, config):
             video.unshow(breakStim)
             clock.delay(config.breakDuration)
 
+            # after break, wait for participant to continue
             if config.breakSubjectControl:
                 endBreakText = Text(open(config.textFiles['endBreak'],'r').read())
                 timestamp = waitForAnyKey(clock, endBreakText)
