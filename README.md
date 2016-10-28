@@ -5,6 +5,10 @@ The [Vanderbilt Computational Memory Lab](https://memory.psy.vanderbilt.edu) use
 This project is designed to show new lab members how [PyEPL](http://pyepl.sourceforge.net/) can be used to construct a basic immediate free recall task.  It is meant to provide a template from which members can develop new, more complex paradigms (e.g., the [asymmetry free recall](https://github.com/jmccluey/asym-free-recall).
 
 
+## Design ##
+
+This application prepares and runs two sessions of an immediate free recall study.  In each session, participants study 16 lists of 24 words each.  After each list, participants are given 75 seconds to verbally recall all of the words they can remember from the most recent list, in any order.  The application records the participant's speech during this period.  After the recall period is over, the participant has a 5 second break before the next list begins.
+
 ## Dependencies
 
 [PyEPL](http://pyepl.sourceforge.net/) - The **Python Experiment Programming Library** is a library for coding psychology experiments in Python.  Downloads are available on the [PyEPL SourceForge page](http://pyepl.sourceforge.net/), or an updated installer is available from the [UPenn Computational Memory Lab](http://memory.psych.upenn.edu/Software).
